@@ -1,14 +1,16 @@
 //App Config
-const express 	 = require('express'),
-	  app 		 = express(),
-	  bodyParser = require('body-parser'),
-	  mongoose	 = require('mongoose'),
-	  Campground = require("./models/campground"),
-	  Comment	 = require("./models/comment"),
-	  seedDB     = require("./seeds");
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import Campground from "./models/campground.js";
+import Comment from "./models/comment.js";
+import seedDB from "./seeds.js";
+
+	  
+const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("/public"));
 app.set("view engine", "ejs");
 
 //fix mongoose deprecation warnings:
@@ -17,7 +19,7 @@ mongoose.set('useUnifiedTopology', true);
 //connect to Mongo db
 mongoose.connect("mongodb://localhost:27017/yelp_camp");
 
-// seedDB();
+seedDB();
 
 //***** ROUTES *****//
 
@@ -125,7 +127,8 @@ app.get("/*", (req, res) => {
 	res.render("error");
 })
 
+let port = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-	console.log("Serving YelpCamp on port 3000");
+app.listen(port, () => {
+	console.log(`Serving YelpCamp on port ${port}`);
 })

@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const Campground = require("./models/campground");
-const Comment = require("./models/comment");
+import mongoose from 'mongoose';
+import Campground from "./models/campground.js";
+import Comment from "./models/comment.js";
 
 const data = [
 	{
@@ -61,4 +61,4 @@ function seedDB() {
 	});
 }
 
-module.exports = seedDB;
+export default seedDB;
