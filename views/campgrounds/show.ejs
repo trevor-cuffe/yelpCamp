@@ -40,9 +40,7 @@
 								<span class="float-right">10 days ago</span>
 								<p><%= comment.text %></p>
 								<!-- Allow the matching user to remove their comment -->
-								<% if(currentUser._id == comment.author.id) { %> 
-									<button class="btn btn-warning">Delete Comment</button>
-								<% } %>
+								
 							</div>
 						</div>
 					<% }) %>
