@@ -8,3 +8,5 @@ Additional features I want to add:
 -Admin user? Can delete campgrounds & comments from any user, and give other users admin privileges
 -Delete your own comments
 -React to other peoples' comments
+
+-Dashboard where I can see all of my campgrounds and comments
