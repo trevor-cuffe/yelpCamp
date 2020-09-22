@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+mongoose.set('useFindAndModify', false);
+
 const campgroundSchema = new mongoose.Schema({
 	name: String,
 	image: String,
@@ -18,5 +20,6 @@ const campgroundSchema = new mongoose.Schema({
 		}
 	]
 });
+
 
 export default mongoose.model("Campground", campgroundSchema);

@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import sessions from 'client-sessions';
+import methodOverride from 'method-override';
 
 //Models:
 // import Campground from "./models/campground.js";
@@ -18,13 +19,14 @@ import indexRoutes from "./routes/index.js";
 import campground from './models/campground.js';
 
 //Seed Campgrounds Database:
-import seedDB from "./seeds.js";
+// import seedDB from "./seeds.js";
 	  
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("/public"));
+app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 
 //fix mongoose deprecation warnings:
 mongoose.set('useNewUrlParser', true);
@@ -32,7 +34,7 @@ mongoose.set('useUnifiedTopology', true);
 //connect to Mongo db
 mongoose.connect("mongodb://localhost:27017/yelp_camp");
 
-seedDB();
+// seedDB();
 
 
 //Passport Configuration

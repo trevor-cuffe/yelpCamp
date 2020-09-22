@@ -1,5 +1,6 @@
 import express from "express";
 import Campground from '../models/campground.js';
+import Comment from '../models/comment.js';
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.post("/", loginRequired, (req, res) => {
 		if (err) {
 			console.error(err);
 		} else {
-			console.log(campground);
+
 		}
 		//redirect to campgrounds, no matter what
 		res.redirect("campgrounds");
@@ -57,6 +58,56 @@ router.get("/:id", (req, res) => {
 		}
 	});
 });
+
+//EDIT Campground
+router.get("/:id/edit", (req, res) => {
+	let id = req.params.id;
+	Campground.findById(id, (err, campground) => {
+		if(err) {
+			console.error(err);
+		} else {
+			res.render("campgrounds/edit", {campground: campground});
+		}
+	});
+});
+
+
+//UPDATE Campground
+router.put("/:id", (req, res) => {
+	let id = req.params.id;
+	Campground.findByIdAndUpdate(id, req.body.campground, (err, updatedCampground) => {
+		if(err) {
+			res.redirect("/campgrounds");
+		} else {
+			res.redirect(`/campgrounds/${id}`);
+		}
+	});
+});
+
+
+//DESTROY Campground
+router.delete("/:id", (req, res) => {
+	let id = req.params.id;
+	Campground.findByIdAndRemove(id, (err, removedCampground) => {
+		if(err) {
+			console.error(err);
+		}
+		Comment.deleteMany( {
+			_id: { $in: removedCampground.comments }
+		}, (err) => {
+			if(err) {
+				console.error(err);
+			}
+		});
+		
+		res.redirect("/campgrounds");
+	});
+
+
+});
+
+
+
 
 //middleware
 function loginRequired(req, res, next) {

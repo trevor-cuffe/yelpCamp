@@ -40,20 +40,20 @@ function seedDB() {
 						console.log("added a campground");
 						
 						//create a comment on each campground
-						// Comment.create({
-						// 	text: "This place is great, but I wish it had internet!",
-						// 	author: "Homer"
-						// }, (err, comment) => {
-						// 	if (err) {
-						// 		console.error(err);
-						// 	} else {
-						// 		console.log("comment successfully created");
+						Comment.create({
+							text: "This place is great, but I wish it had internet!",
+							author: "Homer"
+						}, (err, comment) => {
+							if (err) {
+								console.error(err);
+							} else {
+								console.log("comment successfully created");
 								
-						// 		//add comment to campground
-						// 		campground.comments.push(comment);
-						// 		campground.save()
-						// 	}
-						// });
+								//add comment to campground
+								campground.comments.push(comment);
+								campground.save()
+							}
+						});
 					}
 				});
 			});
