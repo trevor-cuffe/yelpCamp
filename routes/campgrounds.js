@@ -22,23 +22,24 @@ router.get("/", (req, res) => {
 router.post("/", middleware.loginRequired, (req, res) => {
 	//get data from form, add to campgrounds array
 	let newName = req.body.name;
+	let newPrice = req.body.price;
 	let newURL = req.body.image;
 	let newDescription = req.body.description;
 	let author = {
 		id: req.user._id,
 		username: req.user.username
 	}
-	let newCampground = {name:newName, image:newURL, description: newDescription, author: author}
+	let newCampground = {name:newName, price:newPrice, image:newURL, description: newDescription, author: author}
 	
 
 	Campground.create(newCampground, (err, campground) => {
 		if (err) {
 			console.error(err);
+			req.flash("error", "Could not create new campground");
 		} else {
-
+			req.flash("success", `New campground "${campground.name}" created!`);
 		}
 		//redirect to campgrounds, no matter what
-		req.flash("success", `New campground "${campground.name}" created!`)
 		res.redirect("campgrounds");
 	})
 	
@@ -86,7 +87,7 @@ router.put("/:id", middleware.campgroundOwnershipRequired, (req, res) => {
 			req.flash("error", "There was a problem updating the campground");
 			res.redirect("/campgrounds");
 		} else {
-			req.flash("success", `Campground "${campground.name}" was updated!`)
+			req.flash("success", `Campground "${updatedCampground.name}" was updated!`)
 			res.redirect(`/campgrounds/${id}`);
 		}
 	});

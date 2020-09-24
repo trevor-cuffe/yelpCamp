@@ -1,13 +1,34 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YelpCamp</title>
+		
+		<!-- 	Bootstrap 4 CDN:	 -->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/stylesheets/landing.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous"></script>
+	</head>
+	
+	<body>
+		
+		
+		<%- include("partials/navBar.ejs") %>
 
-<h1>
-	Landing Page!
-</h1>
+		<%- include("partials/flash.ejs") %>
 
-<p>
-	Welcome to YelpCamp!
-</p>
+		<div id="landing-header">
+			<h1>Welcome to YelpCamp!</h1>
+			<a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+		</div>
 
-<a href="/campgrounds">View All Campgrounds</a>
+		<!-- Set Background -->
+		<ul class="slideshow">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
 
 <%- include("partials/footer") %>
