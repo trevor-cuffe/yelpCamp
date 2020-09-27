@@ -33,7 +33,8 @@ app.use(flash());
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 //connect to Mongo db
-mongoose.connect("mongodb+srv://tcuffe74:PrrHJq5iWIZpFDze@cluster0.hlyih.azure.mongodb.net/yelp_camp?retryWrites=true&w=majority", {
+
+mongoose.connect(process.env.databaseURL, {
 	useCreateIndex: true
 }).then(() => {
 	console.log('Connected to DB!');
