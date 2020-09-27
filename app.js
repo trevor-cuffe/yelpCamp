@@ -34,7 +34,8 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 //connect to Mongo db
 
-mongoose.connect(process.env.databaseURL, {
+let dbUrl = process.env.databaseURL || "mongodb://localhost:27107/yelp_camp";
+mongoose.connect(dbUrl, {
 	useCreateIndex: true
 }).then(() => {
 	console.log('Connected to DB!');
