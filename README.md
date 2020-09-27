@@ -9,5 +9,7 @@ Additional features I want to add:
 -Delete your own comments
 -React to other peoples' comments
 -Ratings
+-Comment and Campground timestamp
+-Google Maps
 
 -Dashboard where I can see all of my campgrounds and comments
