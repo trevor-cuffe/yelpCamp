@@ -6,6 +6,7 @@ import flash from 'connect-flash';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import sessions from 'client-sessions';
+import randomString from 'crypto-random-string';
 import methodOverride from 'method-override';
 
 //Models:
@@ -34,7 +35,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 //connect to Mongo db
 
-let dbUrl = process.env.databaseURL || "mongodb://localhost:27107/yelp_camp";
+let dbUrl = process.env.databaseURL || "mongodb://localhost:27017/yelp_camp";
 mongoose.connect(dbUrl, {
 	useCreateIndex: true
 }).then(() => {
@@ -47,9 +48,10 @@ mongoose.connect(dbUrl, {
 
 
 //Passport Configuration
+let sessionKey = process.env.SESSION_SECRET || randomString({length: 20});
 app.use(sessions({
 	cookieName: "session",
-	secret: "alxljf9082lixk9u8xlkchvp1304jvvmxoaueb4",
+	secret: sessionKey,
 	duration: 30 * 60 * 1000,
 	activeDuration: 5 * 60 * 1000,
 	httpOnly: true,

@@ -6,7 +6,6 @@ Additional features I want to add:
 -Forgot password
 -Email confirmation
 -Admin user? Can delete campgrounds & comments from any user, and give other users admin privileges
--Delete your own comments
 -React to other peoples' comments
 -Ratings
 -Comment and Campground timestamp
