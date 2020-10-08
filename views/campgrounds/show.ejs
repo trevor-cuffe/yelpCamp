@@ -4,6 +4,10 @@
 
 function timeSince(timestamp) {
 	let now = new Date();
+	if(timestamp > now) {
+		console.log("Time stamp from comment is in the future");
+		return "";
+	}
 	let timeInterval = Math.floor((now - timestamp) / 1000); //time in seconds
 	if (timeInterval < 60 ) return timeInterval + "s ago";
 	timeInterval = Math.floor(timeInterval/60); //convert to minutes
@@ -11,10 +15,10 @@ function timeSince(timestamp) {
 	timeInterval = Math.floor(timeInterval/60); //convert to hours
 	if (timeInterval < 24 ) return timeInterval + "h ago";
 	timeInterval = Math.floor(timeInterval/24); //convert to days
-	if (timeInterval < 21 ) return timeInterval + "days ago";
-	if (timeInterval < 365 ) return timeInterval/7 + "weeks ago";
+	if (timeInterval < 21 ) return timeInterval + " day" + ((timeInterval === 1) ? "":"s") + " ago";
+	if (timeInterval < 365 ) return Math.floor(timeInterval/7) + " weeks ago";
 	timeInterval = Math.floor(timeInterval/365); //convert to years
-	return timeInterval + "years ago";
+	return timeInterval + " year" + ((timeInterval === 1) ? "":"s") + " ago";
 }
 
 %> 
