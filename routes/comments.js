@@ -34,7 +34,6 @@ router.post("/", middleware.loginRequired, (req, res) => {
 				} else {
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username
-					comment.timestamp = new Date();
 					comment.save();
 					campground.comments.push(comment);
 					campground.save();
