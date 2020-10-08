@@ -31,7 +31,7 @@ middlewareObj.campgroundOwnershipRequired = (req, res, next) => {
 		} else {
 			//campground found - check if the user ID matches author ID
 			// //If not correct user - redirect to login
-			if(!campground.author.id.equals(req.user._id)) {
+			if(!campground.author.id.equals(req.user._id) && !req.user.isAdmin) {
                 req.flash('error', "You do not have ownership permissions for this campground");
 				return res.redirect("back");
 			} else {

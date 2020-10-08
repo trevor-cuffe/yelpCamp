@@ -23,6 +23,11 @@ router.get("/register", (req, res) => {
 //Handle signup logic
 router.post("/register", (req, res) => {
 	let newUser = new User({username: req.body.username});
+	if(process.env.adminCode && process.env.adminCode === req.body.adminCode) {
+		newUser.isAdmin = true;
+		req.flash("success","Admin Privileges Assigned");
+	}
+	console.log(process.env.ADMINCODE);
 	User.register(newUser, req.body.password, (err) => {
 		if (err) {
 			console.error(err);

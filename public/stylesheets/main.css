@@ -4,4 +4,20 @@
 
 .signIn {
     padding: 20px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signIn form {
+    width: min(100%, 50vw);
+}
+
+.signIn form * {
+    display: block;
+    margin: 5px;
+}
+
+.signIn form input {
+    width: 100%;
 }
