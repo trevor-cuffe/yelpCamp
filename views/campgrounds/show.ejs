@@ -42,7 +42,7 @@ function timeSince(timestamp) {
 					<h4 class="card-title"><a href="#"><%= campground.name %></a></h4>
 					<p class="card-text"><%= campground.description %></p>
 					<p class="card-text">
-						<em>Submitted by: <%= campground.author.username %></em>
+						<em>Submitted by: <%= campground.author.username %>, <%= timeSince(campground.timestamp) %></em>
 					</p>
 
 					<% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
