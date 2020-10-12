@@ -1,6 +1,8 @@
 <%- include("../partials/header") %>
 
 <div class="container signIn">
+    <a href="/users/<%= user._id %>" class="backLink ml-5 my-2"><i class="fas fa-chevron-left backIcon"></i> Back</a>
+
     <h1>Editing <%= user.username %>'s profile</h1>
     
     <form action="/users/<%= user._id %>/?_method=PUT" method="POST">

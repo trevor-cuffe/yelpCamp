@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.signIn form {
+.signIn form, .signIn .backLink {
     width: min(80%, 600px);
 }
 
@@ -20,4 +20,24 @@
 
 .signIn form input {
     width: 80%;
+}
+
+.backLink {
+    transition: font-weight 0.2s ease-in;
+}
+
+.backLink:hover {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.backLink .backIcon {
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.backLink:hover .backIcon {
+    opacity: 1;
+    transform: translateX(0);
 }
