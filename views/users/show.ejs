@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <h1><%= user.username %></h1>
+            <p><%= user.firstName %> <%= user.lastName %></p>
+            <img src="<%= user.avatar %>" alt="avatar image not found" onerror="this.onerror=null;this.src='/images/defaultAvatar.jpg'">
+            <p class="my-3"> <a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+            <% if(currentUser && ((currentUser.id === user.id) || (currentUser.isAdmin))) { %>
+                <a href="/users/<%= user.id %>/edit" class="btn btn-warning">Edit Profile</a>
+            <% } %> 
+        </div>
+        <div class="col-md-8">
+            <h2>Campgrounds:</h2>
+            <ul>
+                <% if(campgrounds) {
+                    campgrounds.forEach( campground => { %>
+                    <li><a href="/campgrounds/<%= campground._id %>"><%= campground.name %></a></li>
+                    <% }); %>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<%- include("../partials/footer") %> 

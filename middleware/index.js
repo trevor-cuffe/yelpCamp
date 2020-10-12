@@ -14,6 +14,16 @@ middlewareObj.loginRequired = (req, res, next) => {
 	res.redirect("/login");
 }
 
+middlewareObj.userMatchRequired = (req, res, next) => {
+	//if the requested user profile matches the logged in user...
+
+	if(req.user && ( (req.user._id == req.params.id) || (req.user.isAdmin)) ) {
+		return next();
+	}
+	req.flash("error", "You don't have access to this page");
+	res.redirect("back");
+}
+
 middlewareObj.campgroundOwnershipRequired = (req, res, next) => {
 	//check if logged in
 	if (!req.isAuthenticated()) {

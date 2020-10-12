@@ -10,14 +10,14 @@
 }
 
 .signIn form {
-    width: min(100%, 50vw);
+    width: min(80%, 600px);
 }
 
 .signIn form * {
     display: block;
-    margin: 5px;
+    margin: 15px 10%;
 }
 
 .signIn form input {
-    width: 100%;
+    width: 80%;
 }

@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+<div class="container signIn">
+    <h1>Editing <%= user.username %>'s profile</h1>
+    
+    <form action="/users/<%= user._id %>/?_method=PUT" method="POST">
+        <input type="text" name="firstName" placeholder="first name" value=<%= user.firstName %> required>
+        <input type="text" name="lastName" placeholder="last name" value=<%= user.lastName %> required>
+        <input type="email" name="email" placeholder="email" value=<%= user.email %> required>
+        <input type="text" name="avatar" placeholder="avatar image url" value=<%= user.avatar %>>
+        <button>Submit</button>
+    </form>
+</div>
+
+<%- include("../partials/footer") %>
